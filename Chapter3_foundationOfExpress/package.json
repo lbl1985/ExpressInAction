@@ -1,10 +1,11 @@
 {
-  "name":"Chapter3",
+  "name": "Chapter3",
   "version": "0.0.0",
   "scripts": {
-    "start": "nodemon listing_3_6.js"
+    "start": "nodemon listing_3_15.js"
   },
   "dependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.14.1",
     "nodemon": "^1.11.0"
   }
