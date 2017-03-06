@@ -29,7 +29,7 @@ app.get("/", function(req, res){
     res.end("Hello world from my own");
 });
 
-app.get("/files/:fileName", function(req, res){
+app.get("/files/:fileName", function(req, res, next){
     var file = req.params.fileName;
     var filePath = path.join(__dirname, "static", file);
     fs.stat(filePath, function(err, fileInfo){
@@ -45,7 +45,7 @@ app.get("/files/:fileName", function(req, res){
     });
 });
 
-app.get("/files/:project/:fileName", function(req, res){
+app.get("/files/:project/:fileName", function(req, res, next){
     var filePath = path.join(__dirname, "static", req.params.project, req.params.fileName);
     fs.stat(filePath, function(err, fileInfo){
         if(err) {
@@ -59,6 +59,11 @@ app.get("/files/:project/:fileName", function(req, res){
         }
     });
 });
+
+app.use(function(req, res){
+    res.status(404);
+    res.send("File not found!");
+})
 
 app.listen(3000, function(){
     console.log("App Started on port 3000");
