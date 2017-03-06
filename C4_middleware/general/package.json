@@ -1,11 +1,12 @@
 {
   "name": "chapter4_general",
   "private": true,
-  "scripts":{
-      "start": "nodemon list_4_3.js"
+  "scripts": {
+    "start": "nodemon list_4_8.js"
   },
   "dependencies": {
     "express": "^4.15.0",
+    "morgan": "^1.8.1",
     "nodemon": "^1.11.0"
   }
 }
