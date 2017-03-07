@@ -27,11 +27,16 @@ app.get(/^\/users\/(\d+)-(\d+)$/, function(req, res){
 
 var horribleRegex = /^\/([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$)/i;
 
+// Testing: http://127.0.0.1:3000/00000000-af9b-401a-93bc-00000000001b
 app.get(horribleRegex, function(req, res){
     var uuid = req.params[0];
     res.send("uuid page: " + uuid);
 });
 
+// Testing: http://127.0.0.1:3000/search?q=hello%20world
+app.get("/search", function(req, res){
+    res.send("receiving query " + req.query.q);
+})
 app.use(function(req, res){
     res.status(404).send("Page not found!");
 });
