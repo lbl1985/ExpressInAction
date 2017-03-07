@@ -1,0 +1,10 @@
+{
+  "name":"c5_general",
+  "private": true,
+  "scripts": {
+    "start":"nodemon list_5_1.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
