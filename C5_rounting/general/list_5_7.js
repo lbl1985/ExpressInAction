@@ -1,5 +1,7 @@
 var express = require('express');
+var https = require("https");
 var path = require('path');
+var fs = require("fs");
 var apiRouter = require("./routes/api_router");
 
 var app = express();
@@ -14,5 +16,10 @@ app.use("/api", apiRouter);
 
 app.use(express.static(staticPath));
 app.use(express.static(photoPath));
+
+// var httpsOptions = {
+//     key: fs.readFileSync("./private/privatekey.pem"),
+//     cert: fs.readFileSync("./private/request.pem")
+// }
 
 app.listen(3000);
