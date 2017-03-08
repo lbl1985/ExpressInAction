@@ -12,4 +12,7 @@ app.use("/actor", express.static(photoPath));
 
 app.use("/api", apiRouter);
 
+app.use(express.static(staticPath));
+app.use(express.static(photoPath));
+
 app.listen(3000);
