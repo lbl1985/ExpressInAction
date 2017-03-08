@@ -5,7 +5,10 @@ var apiRouter = require("./routes/api_router");
 var app = express();
 
 var staticPath = path.resolve(__dirname, "static");
-app.use(express.static(staticPath));
+app.use("/config", express.static(staticPath));
+
+var photoPath = path.resolve(__dirname, "photos-folder");
+app.use("/actor", express.static(photoPath));
 
 app.use("/api", apiRouter);
 
