@@ -12,7 +12,7 @@ app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
-    app.render("myindex");
+    res.render("index");
 });
 
 app.get(/^\/(\d{5})$/, function(req, res, next){
