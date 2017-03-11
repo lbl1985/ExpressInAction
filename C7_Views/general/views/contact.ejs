@@ -1,0 +1,13 @@
+Hi <%= name %>!
+<br>You were born in <%= birthyear %>, so that means your're <%= (new Date()).getFullYear() - birthyear %> years old.</br>
+
+<br>
+<% if (career) { -%>
+    <%= career %> is a cool career!
+<% } else { -%>
+    Havent' started a career yet? That's cool.
+<% } -%>
+</br>
+<br>
+Oh, let's read your bio: <%- bio %> See you later!
+</br>
