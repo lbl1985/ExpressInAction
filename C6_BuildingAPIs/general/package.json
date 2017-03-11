@@ -2,7 +2,7 @@
   "name":"random_number_generator",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon diffVerb.js"
   },
   "dependencies": {
     "express": "^4.15.2"
