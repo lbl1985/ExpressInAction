@@ -15,6 +15,18 @@ app.use(function(req, res, next){
     next();
 });
 
+var staticPath = path.join(__dirname, "static/img");
+app.use("/img", express.static(staticPath));
+
+app.get("/welcome", function(req, res){
+    res.render("welcome");
+});
+
+app.get("/yiyan", function(req, res){
+    res.render("yiyan");
+})
+
+
 app.get("/about", function(req, res){
     res.render("about", {
         currentUser: "india-ariel123"
