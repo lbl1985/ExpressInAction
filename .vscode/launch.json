@@ -12,7 +12,7 @@
             "runtimeArgs": [
                 "--debug=5858"
             ],
-            "program": "${workspaceRoot}/C5_rounting/weather/app.js",
+            "program": "${workspaceRoot}/C8_database/learn-about-me/app.js",
             "restart": true,
             "port": 5858,
             "console": "integratedTerminal",
