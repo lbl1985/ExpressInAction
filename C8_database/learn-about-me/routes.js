@@ -90,16 +90,8 @@ router.post("/edit", ensureAuthenticated, function(req, res, next){
             return;
         }
         req.flash("info", "Profile updated");
-        res.redirect("/edit");
+        res.redirect("/");
     });
 });
-
-// router.use(passport.authenticate("login", {
-//             successRedict: "/",
-//             failureRedict: "/signup",
-//             failureFlash: true
-//         }));
-
-
 
 module.exports = router;
