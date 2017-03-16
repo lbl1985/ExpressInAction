@@ -60,6 +60,15 @@ router.post("/signup", function(req, res, next){
     });    
 });
 
+function ensureAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        next();
+    } else {
+        req.flash("info", "You must be logged in to see this page.");
+        res.redirect("/login");
+    }
+}
+
 router.get("/users/:username", function(req, res, next){
     User.findOne({username: req.params.username}, function(err, user){
         if(err) {return next(err);}
@@ -67,6 +76,23 @@ router.get("/users/:username", function(req, res, next){
         res.render("profile", {user:user});
     })
 })
+
+router.get("/edit", ensureAuthenticated, function(req, res){
+    res.render("edit");
+})
+
+router.post("/edit", ensureAuthenticated, function(req, res, next){
+    req.user.displayName = req.body.displayname;
+    req.user.bio = req.body.bio;
+    req.user.save(function(err){
+        if(err) {
+            next(err);
+            return;
+        }
+        req.flash("info", "Profile updated");
+        res.redirect("/edit");
+    });
+});
 
 // router.use(passport.authenticate("login", {
 //             successRedict: "/",
