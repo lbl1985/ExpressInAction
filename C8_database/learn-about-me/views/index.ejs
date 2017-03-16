@@ -5,9 +5,16 @@
     <% var user = users[i] %>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <a href="/users/<%= user.username %>">
-                <%= user.name() %>
-            </a>
+            <ul>
+                <li>
+                    <a href = "/users/<%= user.username %>"> 
+                        <%= user.name() %>
+                    </a>                                  
+                    <form action="/users/<%= user.username %>" method="delete">
+                        <input type="submit" class="btn pull-right btn-primary" value="Delete">
+                    </form>                    
+                </li>
+            </ul>            
         </div>
         <% if (user.bio) { %>
             <div class="panel-body"><%= user.bio %></div>

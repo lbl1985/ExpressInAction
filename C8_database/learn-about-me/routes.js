@@ -70,6 +70,12 @@ function ensureAuthenticated(req, res, next) {
 }
 
 router.get("/users/:username", function(req, res, next){
+    User.findOne({username: req.params.username}).remove().exec();
+    req.flash("info", req.params.username + " is removed;");
+    res.redirect("/");
+})
+
+router.delete("/users/:username", function(req, res, next){
     User.findOne({username: req.params.username}, function(err, user){
         if(err) {return next(err);}
         if(!user) {return next(404);}
