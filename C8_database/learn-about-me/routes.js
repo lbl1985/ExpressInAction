@@ -19,6 +19,24 @@ router.get("/", function(req, res, next){
     });
 });
 
+router.get("/login", function(req, res, next){
+    res.render("login"); 
+});
+
+// router.post("/login", function(req, res, next){
+//     res.send("login post");
+// });
+router.post("/login", passport.authenticate('local', {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true
+}));
+
+router.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/");
+})
+
 router.get("/signup", function(req, res){
     res.render("signup");
 });
@@ -42,11 +60,20 @@ router.post("/signup", function(req, res, next){
     });    
 });
 
+router.get("/users/:username", function(req, res, next){
+    User.findOne({username: req.params.username}, function(err, user){
+        if(err) {return next(err);}
+        if(!user) {return next(404);}
+        res.render("profile", {user:user});
+    })
+})
 
 // router.use(passport.authenticate("login", {
 //             successRedict: "/",
 //             failureRedict: "/signup",
 //             failureFlash: true
 //         }));
+
+
 
 module.exports = router;

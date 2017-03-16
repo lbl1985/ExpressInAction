@@ -1,7 +1,8 @@
 <% include _header %>
 <h1> Welcome to Learn About Me! </h1>
 
-<% users.forEach(function(user){ %>
+<% for( var i = 0; i < users.length; i++) { %>
+    <% var user = users[i] %>
     <div class="panel panel-default">
         <div class="panel-heading">
             <a href="/users/<%= user.username %>">
@@ -12,6 +13,6 @@
             <div class="panel-body"><%= user.bio %></div>
         <% } %>
     </div>
-<% }) %>
+<% } %>
 
 <% include _footer %>
